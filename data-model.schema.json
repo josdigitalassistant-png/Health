@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "almanac/data-model/v1",
+  "title": "Almanac data model",
+  "description": "Model version 1 · app 0.2.0. Keep in step with docs/data-model.md.",
+  "type": "object",
+  "properties": {
+    "profile": { "$ref": "#/$defs/Profile" },
+    "settings": { "$ref": "#/$defs/Settings" },
+    "tags": {
+      "type": "object",
+      "properties": {
+        "mood": { "$ref": "#/$defs/TagGroup" },
+        "sym": { "$ref": "#/$defs/TagGroup" },
+        "med": { "$ref": "#/$defs/TagGroup" },
+        "sport": { "$ref": "#/$defs/TagGroup" }
+      },
+      "additionalProperties": false
+    },
+    "regularMeds": { "type": "array", "items": { "$ref": "#/$defs/RegularMed" } },
+    "days": {
+      "type": "object",
+      "propertyNames": { "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+      "additionalProperties": { "$ref": "#/$defs/Day" }
+    }
+  },
+  "$defs": {
+    "Score": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "Profile": {
+      "type": "object",
+      "required": ["uid", "name", "email"],
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string", "maxLength": 80 },
+        "email": { "type": "string", "format": "email" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "consentAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "bg": { "enum": ["Palette", "Periwinkle", "Mint", "Pink", "Off"], "default": "Mint" },
+        "collapsed": { "type": "boolean", "default": true },
+        "strip": { "type": "boolean", "default": false },
+        "reminderTime": { "type": "string", "pattern": "^\\d{2}:\\d{2}$" }
+      },
+      "additionalProperties": false
+    },
+    "TagGroup": {
+      "type": "object",
+      "properties": {
+        "custom": { "type": "array", "items": { "type": "string", "maxLength": 40 }, "uniqueItems": true },
+        "hidden": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+      },
+      "additionalProperties": false
+    },
+    "RegularMed": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string", "maxLength": 60 },
+        "dose": { "type": "string", "maxLength": 120 },
+        "active": { "type": "boolean", "default": true }
+      }
+    },
+    "Workout": {
+      "type": "object",
+      "required": ["id", "source", "sport", "mins"],
+      "properties": {
+        "id": { "type": "string" },
+        "source": { "enum": ["manual", "strava"] },
+        "sport": { "type": "string", "maxLength": 40 },
+        "mins": { "type": "integer", "minimum": 1 },
+        "km": { "type": "number", "minimum": 0 },
+        "intensity": { "$ref": "#/$defs/Score" },
+        "note": { "type": "string", "maxLength": 2000 },
+        "stravaId": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "Day": {
+      "type": "object",
+      "properties": {
+        "fund": { "type": "array", "items": { "type": "boolean" }, "minItems": 5, "maxItems": 5 },
+        "cycle": { "enum": ["None", "Spotting", "Ovulation", "Period"] },
+        "flow": { "enum": ["Light", "Medium", "Heavy", "Very heavy"] },
+        "mood": { "$ref": "#/$defs/Score" },
+        "stress": { "$ref": "#/$defs/Score" },
+        "moodTags": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "moodNote": { "type": "string", "maxLength": 2000 },
+        "sleep": { "$ref": "#/$defs/Score" },
+        "sleepNote": { "type": "string", "maxLength": 2000 },
+        "moved": { "type": "boolean" },
+        "workouts": { "type": "array", "items": { "$ref": "#/$defs/Workout" } },
+        "sym": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "symNote": { "type": "string", "maxLength": 2000 },
+        "meds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "headache": { "enum": ["None", "Headache", "Migraine"] },
+        "diary": { "type": "string", "maxLength": 10000 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "if": { "not": { "properties": { "cycle": { "const": "Period" } }, "required": ["cycle"] } },
+      "then": { "not": { "required": ["flow"] } }
+    }
+  }
+}
