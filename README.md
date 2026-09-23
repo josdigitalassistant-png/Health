@@ -1,8 +1,9 @@
+[README.md](https://github.com/user-attachments/files/32556857/README.md)
 # Almanac — clickable prototype
 
 A clickable test version of **Almanac** (working name), a private daily health log. It covers cycle, mood, sleep, movement, symptoms, medication, headaches and a diary, plus a calendar, trends and PDF reports.
 
-**Live link:** https://josdigitalassistant.github.io/almanac-prototype/
+**Live link:** https://YOUR-USERNAME.github.io/almanac-prototype/
 
 > ⚠️ **Prototype only. Please don't enter real health data.**
 > Accounts and entries are saved only in the browser you use. They aren't sent anywhere, backed up or encrypted, and clearing browser data deletes them.
@@ -29,6 +30,7 @@ Open an **Issue** in this repo, with a screenshot where possible and the phone a
 
 | | |
 |---|---|
+| Version | 0.2.0 (shown on the sign-in screen and in the account sheet) |
 | Stage | Design prototype, not the production app |
 | Sign-in & storage | Simulated in the browser |
 | Strava | Shown in the design, not connected |
