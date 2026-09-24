@@ -1,4 +1,16 @@
+[CHANGELOG.md](https://github.com/user-attachments/files/32615907/CHANGELOG.md)
 # Changelog
+
+## Unreleased
+
+_Nothing yet._
+
+## 0.3.0 — 2026-09-24
+
+- Mobile: removed the see-through bar pinned at the top, so content starts under the phone’s own status bar.
+- Today: new Alcohol yes/no card, and a new Allergies section (itchy eyes, runny nose, sneezing… plus your own tags and a note). Both show in the Calendar day summary; alcohol days also feed the Alcohol theme in the Migraine report.
+- Settings: “Sections on Today” — switch any section off per account. Hidden sections drop out of Today and the shortcuts; past data is kept.
+- Data model v2: `alcohol`, `allergy`, `allergyNote` on Day; `allergy` tag group; `hiddenSecs` setting.
 
 ## 0.2.0 — 2026-09-23
 
