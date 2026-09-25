@@ -1,9 +1,15 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/32615907/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/32646797/CHANGELOG.md)
 # Changelog
 
 ## Unreleased
 
-_Nothing yet._
+## 0.3.1 — 2026-09-25
+
+- Allergies: new 1–5 severity scale (mild → severe), shown in the section summary and the Calendar day summary.
+- Data model v3: `allergySev` on Day.
+- Settings → Your data: Export backup (a JSON file; uses the share sheet on phones so you can save it to Files or iCloud) and Import backup (merge or replace). No stored fields changed.
+- Accounts now sync: sign in with Google or an emailed link (no password), and your entries are saved to your own private cloud account and kept on the phone for offline use. Existing entries on the phone are uploaded on first sign-in. Device-only accounts and the demo are still available.
+- Data model v4: cloud layout `users/{uid}` + `days`; new localStorage keys for cloud sessions and email-link sign-in.
 
 ## 0.3.0 — 2026-09-24
 
