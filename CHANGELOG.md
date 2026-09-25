@@ -1,7 +1,14 @@
-[CHANGELOG.md](https://github.com/user-attachments/files/32646797/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/user-attachments/files/32647579/CHANGELOG.md)
 # Changelog
 
 ## Unreleased
+
+## 0.3.2 — 2026-09-25
+
+- Movement: the “Strava connected” line now shows only on the demo account (Strava isn’t connected for real accounts yet).
+- Movement: Strava workouts show the activity name and start time, plus average/max heart rate and elevation when recorded. Manual runs, walks, cycles and swims can have an optional distance.
+- Movement: when a Strava workout matches a manual one of the same sport that day, the app asks whether to merge them or keep both.
+- Data model v5: `title`, `start`, `avgHr`, `maxHr`, `elev`, `keepSeparate` on Workout; `km` on manual workouts.
 
 ## 0.3.1 — 2026-09-25
 
