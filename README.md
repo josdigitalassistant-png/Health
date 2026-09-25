@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/32615922/README.md)
+[README.md](https://github.com/user-attachments/files/32646820/README.md)
 # Almanac — clickable prototype
 
 A clickable test version of **Almanac** (working name), a private daily health log. It covers cycle, mood, sleep, movement, symptoms, allergies, alcohol, medication, headaches and a diary, plus a calendar, trends and PDF reports.
@@ -30,9 +30,9 @@ Open an **Issue** in this repo, with a screenshot where possible and the phone a
 
 | | |
 |---|---|
-| Version | 0.3.0 (shown on the sign-in screen and in the account sheet) |
+| Version | 0.3.1 (shown on the sign-in screen and in the account sheet) |
 | Stage | Design prototype, not the production app |
-| Sign-in & storage | Simulated in the browser |
+| Sign-in & storage | Google or email-link sign-in via Firebase; entries sync to a private cloud account (Firestore, EU) and stay on the phone for offline use. Demo and device-only accounts stay in the browser |
 | Strava | Shown in the design, not connected |
 | Next | Production build with React Native (Expo) and Firebase |
 
